@@ -1,0 +1,35 @@
+Main Differences From Solo:
+No scattered random actors - All we need are bricks, ball, and bat.
+	- Loop for bricks, no need to read txt file
+Repurpose robot into a bat
+We can lose (when ball hits the bottom "wall") - Potential enhancement lives
+(Additional) enhancement - Want to play again?
+
+constants - (Probably a little change) - Nathaniel
+control_actors_action - (Probably no change needed)
+
+director - Needs change, add _keep_playing attribute and method to check if we are playing - Chase
+	- Keep in mind the do you want to try again prompts (have fun with asciimatics)
+	
+handle_collisions_action - WIll need changes, accounting for all 4 kinds of collisions(wall, brick, bat, floor) - TJ
+
+input_service - some adjustments, only allow left and right movement. Enable key for keep playing prompt (Spacebar). - Nathaniel
+main - This will need changes - Nathaniel
+bat.py(Actor) - List of Actor objects. (this can probably be integrated with main)
+
+brick.py(Actor) - List of Actor objects. - Lucas
+	-Start with list of every brick in game.
+	-reset method - renew the list with all objects and set locations in a grid(use a nested for loop 4 rows, 70 columns)
+	-Destroy method - Takes Point of collision as an argument and deletes the brick object that is at that point
+	-(Additional) upgrade bricks?
+	
+ball.py(Actor) - One actor object - Kyle
+	- reset method - start ball around or in middle of screen with a random velocity (within reasonable speed, and not downward
+	(Or ball starts on bat, press space to give random velocity)
+	- move method - basically copied from move actors class. Written to give the ability to move the ball every other "frame",
+	use boolean/int, in if else statements to make it run move every other  frame. Look at slack chat from Brother Lythgoe and Nathaniel  - 6/8/2021
+	- maybe random velocity method - give the ball a random velocity (maybe have a difficulty variable?)
+	
+(Additional)shield - actor for the powerup
+
+Try to have things (even if it is super rough) pushed by Thursday! Nathaniel won't be around saturday morning! You got this!
