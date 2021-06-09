@@ -32,4 +32,4 @@ ball.py(Actor) - One actor object - Kyle
 	
 (Additional)shield - actor for the powerup
 
-Try to have things (even if it is super rough) pushed by Thursday! Nathaniel won't be around saturday morning! You got this!
+Try to have things (even if it is super rough) pushed by Thursday! Nathaniel won't be around saturday morning and really doesn't want a late night submission! You got this!
