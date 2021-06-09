@@ -1,3 +1,4 @@
+from batter.game import start_game_action
 import random
 from game import constants
 from game.director import Director
@@ -7,6 +8,7 @@ from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
 from game.handle_collisions_action import HandleCollisionsAction
 from game.move_actors_action import MoveActorsAction
+from game.start_game_action import StartGameAction
 from game.input_service import InputService
 from game.output_service import OutputService
 from asciimatics.screen import Screen 
@@ -51,8 +53,10 @@ def main(screen):
     control_actors_action = ControlActorsAction(input_service)
     move_actors_action = MoveActorsAction()
     handle_collisions_acition = HandleCollisionsAction()
+    start_game_action = StartGameAction()
     draw_actors_action = DrawActorsAction(output_service)
     
+    script['pause'] = [start_game_action]
     script["input"] = [control_actors_action]
     script["update"] = [move_actors_action, handle_collisions_acition]
     script["output"] = [draw_actors_action]
