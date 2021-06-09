@@ -28,7 +28,6 @@ class DrawActorsAction(Action):
             cast - A dictionary of Actor objects
         """
         self.output_service.clear_screen()
-        self.output_service.draw_actors(cast['robot'])
-        self.output_service.draw_actors(cast['marquee'])
-        self.output_service.draw_actors(cast['artifact'])
+        for group in cast.values():
+            self._output_service.draw_actors(group)
         self.output_service.flush_buffer()
