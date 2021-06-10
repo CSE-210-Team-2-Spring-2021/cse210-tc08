@@ -39,3 +39,11 @@ class Director:
         """ 
         for action in self._script[tag]:
             action.execute(self._cast)
+
+    def _keep_playing(self):
+        """Asks the user if they would like to play again and restarts the game"""
+        play_again = input("Would you like to play again? If so, press \"Space\"")
+        if play_again == self._script.space_pressed():
+            self.start_game()
+        else:
+            print("Thank you for playing!")
