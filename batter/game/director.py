@@ -45,6 +45,6 @@ class Director:
         """Asks the user if they would like to play again and restarts the game"""
         if self.handle_collisions.execute(self._cast.floor):
             for actor in self._cast["text"][0]:
-                actor.get_text("Too play again, press the \"Space\" key.")
+                actor.set_text("Too play again, press the \"Space\" key.")
                 self._cue_action("pause")
                 actor.set_text("")
