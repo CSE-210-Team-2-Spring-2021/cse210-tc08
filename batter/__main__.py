@@ -26,7 +26,7 @@ def main(screen):
     cast["text"] = [text]
 
     x = int(constants.MAX_X / 2)
-    y = int(constants.MAX_Y - 1)
+    y = int(constants.MAX_Y - 2)
     position = Point(x, y)
     paddle = Actor()
     paddle.set_text("===========")
@@ -42,6 +42,23 @@ def main(screen):
             brick.set_position(position)
             cast["brick"].append(brick)
 
+    cast["floor"] = []
+    for x in range(1, constants.MAX_X - 1):
+        y = constants.MAX_Y
+        position = Point(x, y)
+        floor = Actor()
+        floor.set_text("_")
+        floor.set_position(position)
+        cast["floor"].append(floor)
+
+    cast["ceiling"] = []
+    for x in range(1, constants.MAX_X - 1):
+        y = 0
+        position = Point(x, y)
+        ceiling = Actor()
+        ceiling.set_text("_")
+        ceiling.set_position(position)
+        cast["ceiling"].append(ceiling)
 
     cast["wall"] = []
     for y in range(0, constants.MAX_Y):
