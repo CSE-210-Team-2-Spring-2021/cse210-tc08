@@ -1,4 +1,4 @@
-from batter.game import start_game_action
+from game import start_game_action
 import random
 from game import constants
 from game.director import Director
@@ -35,6 +35,22 @@ def main(screen):
             brick.set_text("*")
             brick.set_position(position)
             cast["brick"].append(brick)
+
+    cast["wall"] = []
+    for y in range(0, constants.MAX_Y):
+        x = 0
+        position = Point(x, y)
+        wall = Actor()
+        wall.set_text("|")
+        wall.set_position(position)
+        cast["wall"].append(wall)
+    for y in range(0, constants.MAX_Y):
+        x = constants.MAX_X
+        position = Point(x, y)
+        wall = Actor()
+        wall.set_text("|")
+        wall.set_position(position)
+        cast["wall"].append(wall)
 
     x = int(constants.MAX_X / 2)
     y = int(constants.MAX_Y / 2)
