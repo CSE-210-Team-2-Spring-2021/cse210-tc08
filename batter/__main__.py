@@ -38,7 +38,7 @@ def main(screen):
             cast["brick"].append(brick)
 
     x = int(constants.MAX_X / 2) # middle of screen left to right
-    y = int(constants.MAX_Y - 17) # move starting ball position just above Paddle
+    y = int(constants.MAX_Y - 2) # move starting ball position just above Paddle
     position = Point(x, y)
     velocity = Point(1, 1) # Kyle is a little confused on setting upward velocity. replaced (1,-1) with (1,1)
     ball = Actor()
@@ -57,10 +57,11 @@ def main(screen):
     handle_collisions_acition = HandleCollisionsAction()
     start_game_action = StartGameAction()
     draw_actors_action = DrawActorsAction(output_service)
+    reset_ball = Ball()
 
     script['pause'] = [start_game_action]
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_acition]
+    script["update"] = [move_actors_action, handle_collisions_acition, reset_ball]
     script["output"] = [draw_actors_action]
 
     # start the game
