@@ -19,6 +19,11 @@ def main(screen):
     # create the cast {key: tag, value: list}
     cast = {}
 
+    text = Actor()
+    text.set_text("")
+    text.set_position(Point(1, 0))
+    cast["text"] = [text]
+
     x = int(constants.MAX_X / 2)
     y = int(constants.MAX_Y - 1)
     position = Point(x, y)
