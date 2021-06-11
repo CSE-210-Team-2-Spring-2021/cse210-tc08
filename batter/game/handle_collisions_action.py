@@ -16,12 +16,12 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
+
         wall = cast["wall"][2]
         floor = cast["floor"][0]
         bat = cast["bat"][0]
         ball = cast["ball"][0]
         bricks = cast["brick"]
-        wall.set_text("")
         for brick in bricks:
             if ball.get_position().equals(brick.get_position()):
                 description = brick.get_description()

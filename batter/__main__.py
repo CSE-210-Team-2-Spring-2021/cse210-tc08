@@ -42,6 +42,23 @@ def main(screen):
             brick.set_position(position)
             cast["brick"].append(brick)
 
+
+    cast["wall"] = []
+    for y in range(0, constants.MAX_Y):
+        x = 0
+        position = Point(x, y)
+        wall = Actor()
+        wall.set_text("|")
+        wall.set_position(position)
+        cast["wall"].append(wall)
+    for y in range(0, constants.MAX_Y):
+        x = constants.MAX_X
+        position = Point(x, y)
+        wall = Actor()
+        wall.set_text("|")
+        wall.set_position(position)
+        cast["wall"].append(wall)
+
     x = int(constants.MAX_X / 2) # middle of screen left to right
     y = int(constants.MAX_Y - 2) # move starting ball position just above Paddle
     position = Point(x, y)
