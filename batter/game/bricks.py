@@ -19,30 +19,29 @@ class Bricks(Actor):
         """
         super().__init__()
 
-    def destroyBricks(self,bricks,ball_position):
+    def destroyBricks(self,brick_position,cast):
         """Deletes the brick where the ball hits (The ball is in the same place as a brick )
         
         Args:
-            bricks (list):          The list with all the bricks
-            ball_position(Point):   The balll's position in 2d space.
+            brick_position(Point):   The ball's position in 2d space.
+            cast (dict):             {key: tag, value: list}.
         """ 
-        if bricks.count(ball_position) == 1:      #Validates if the ball is in the same place as a brick
-            bricks.remove(ball_position)        #If is true, it's going to remove a brick in the ball_position. The remove() method will remove only the first occurrence of thing.
-        return bricks
+        bricks = cast["brick"]
+        bricks.remove(brick_position)         #It's going to remove a brick in the ball's position. The remove() method will remove only the first occurrence.
+        return cast
 
     def generateBricks(self,cast):
         """Generate a new list of items and append it into "cast"
         
         Args:
-            bricks (list):          The list with all the bricks
-            ball_position(Point):   The balll's position in 2d space.
+            cast (dict):            {key: tag, value: list}.
         """ 
-        if len(cast["brick"]) == 0:             #Check if the Brick's list it empty
-            cast["brick"] = []
-            for x in range(5, 75):
-                for y in range(2, 6):
-                    position = Point(x, y)
+        bricks = cast["brick"]
+        for x in range(5, 75):
+            for y in range(2, 6):
+                position = Point(x, y)
+                if bricks.count(position) == 0:             #Check if the Brick's position it empty
                     self.set_text("*")
                     self.set_position(position)
-                    cast["brick"].append(self)
+                    bricks.append(self)
         return cast
