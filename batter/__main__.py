@@ -96,11 +96,11 @@ def main(screen):
     handle_collisions_acition = HandleCollisionsAction()
     start_game_action = StartGameAction()
     draw_actors_action = DrawActorsAction(output_service)
-    reset_ball = Ball()
+    
 
     script['pause'] = [start_game_action]
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_acition, reset_ball]
+    script["update"] = [move_actors_action, handle_collisions_acition]
     script["output"] = [draw_actors_action]
 
     # start the game

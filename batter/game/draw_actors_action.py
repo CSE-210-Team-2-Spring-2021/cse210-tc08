@@ -18,7 +18,7 @@ class DrawActorsAction(Action):
             output_service - An instance of OutputService
         """
 
-        self.output_service = output_service
+        self._output_service = output_service
 
     def execute(self, cast):
         """Draws the actors on the screen
@@ -27,7 +27,7 @@ class DrawActorsAction(Action):
             self - An instance of DrawActorsAction
             cast - A dictionary of Actor objects
         """
-        self.output_service.clear_screen()
+        self._output_service.clear_screen()
         for group in cast.values():
             self._output_service.draw_actors(group)
-        self.output_service.flush_buffer()
+        self._output_service.flush_buffer()
