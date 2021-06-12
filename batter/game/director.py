@@ -23,6 +23,7 @@ class Director:
         """
         self._cast = cast
         self._script = script
+        self._first_run = True
 
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
@@ -32,6 +33,8 @@ class Director:
             self._cue_action("update")
             self._cue_action("output")
 
+            if self._cast['ball'][0].get_floor():
+                self._keep_playing()
 
             sleep(constants.FRAME_LENGTH)
 
@@ -47,7 +50,11 @@ class Director:
     def _keep_playing(self):
         """Asks the user if they would like to play again and restarts the game"""
         actor = self._cast['text'][0]
-        actor.set_text("Press Enter to start game, Press Esc to quit:")
+        if self._first_run:
+            actor.set_text("Press Spacebar to start game, Press Esc to quit:")
+            self._first_run = False
+        else:
+            actor.set_text("You Lost! Press Spacebar to try again, Press Esc to quit:")
         self._cue_action('output')
         self._cue_action("pause")
         actor.set_text("")

@@ -39,6 +39,7 @@ class HandleCollisionsAction(Action):
 
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
+                return
 
         for unit in wall:
             if ball.get_position().equals(unit.get_position()):
@@ -47,17 +48,15 @@ class HandleCollisionsAction(Action):
                     x = random.randint(-speed_level, -1)
                 else:
                     x = random.randint(1, speed_level)
-
                 y = random.choice(speed_list)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
+                return
 
         for unit in floor:
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(-speed_level, speed_level) #THis needs to become some kind of stopping code
-                y = random.randint(-speed_level, speed_level)
-                velocity = Point(x, y)
-                ball.set_velocity(velocity)
+                ball.set_floor()
+                return
 
         for unit in ceiling:
             if ball.get_position().equals(unit.get_position()):
@@ -65,6 +64,7 @@ class HandleCollisionsAction(Action):
                 y = random.randint(1, speed_level)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
+                return
 
         for pad in paddle:
             if ball.get_position().equals(pad.get_position()):
@@ -72,3 +72,4 @@ class HandleCollisionsAction(Action):
                 y = random.randint(-speed_level, -1)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
+                return

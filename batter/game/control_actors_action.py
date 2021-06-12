@@ -27,6 +27,6 @@ class ControlActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         direction = self._input_service.get_direction()
-        paddle = cast["paddle"] # there's only one in the cast
+        paddle = cast["paddle"] 
         for pad in paddle:
             pad.set_velocity(direction)        

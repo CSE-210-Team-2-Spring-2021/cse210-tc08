@@ -8,6 +8,7 @@ class Ball(Actor):
         Service Provider
     Attributes:
         cast (dict list) - dictionary of the Actors
+        _floor
     """
     pass
 
@@ -17,6 +18,7 @@ class Ball(Actor):
             self - An instance of Ball
         """
         super().__init__()
+        self._floor = False
 
     def reset(self, cast):
         """ Responsible for resetting the Ball on the Paddle with new random direction.
@@ -59,4 +61,26 @@ class Ball(Actor):
         else:
             frame = True
 
+    def set_floor(self):
+        """Sets floor to True, this will happen when the ball hits the floor
+
+        Args:
+            self - An instance of Ball
+        """
+        self._floor = True
     
+    def reset_floor(self):
+        """Sets floor to False, this will happen when play continues with start_game_action
+
+        Args:
+            self - An instance of Ball
+        """
+        self._floor = False
+    
+    def get_floor(self):
+        """Returns current value of floor
+
+        Args:
+            self -  An instance of Ball
+        """
+        return self._floor

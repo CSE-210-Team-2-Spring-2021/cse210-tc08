@@ -1,4 +1,4 @@
-import random
+import random, math
 from game.action import Action
 from game.point import Point
 
@@ -28,6 +28,13 @@ class StartGameAction(Action):
             cast (dict): The game actors, in this case I use ball
         """
         ball = cast["ball"][0]  # there's only one in the cast
+        index = math.floor(len(cast['paddle'])/2)
+        paddle_position = cast['paddle'][index].get_position()
+        x = paddle_position.get_x()
+        y = paddle_position.get_y()
+        ball_position  = Point(x, (y - 1))
+        ball.set_position(ball_position)
+        ball.reset_floor()
         while True:
             space_pressed = self._input_service.space_pressed()
             if space_pressed:

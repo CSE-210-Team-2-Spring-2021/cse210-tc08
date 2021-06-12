@@ -25,14 +25,6 @@ def main(screen):
     text.set_position(Point(2, 0))
     cast["text"] = [text]
 
-    #x = int(constants.MAX_X / 2)
-    #y = int(constants.MAX_Y - 2)
-    #position = Point(x, y)
-    #paddle = Actor()
-    #paddle.set_text("===========")
-    #paddle.set_position(position)
-    #cast["paddle"] = [paddle]
-
     cast['paddle'] = []
     for x in range(math.floor(constants.MAX_X/2 - 6), math.ceil(constants.MAX_X/2 + 6)):
         y = int(constants.MAX_Y - 2)
@@ -78,7 +70,7 @@ def main(screen):
         wall.set_position(position)
         cast["wall"].append(wall)
     for y in range(0, constants.MAX_Y):
-        x = constants.MAX_X - 2
+        x = constants.MAX_X - 1
         position = Point(x, y)
         wall = Actor()
         wall.set_text("|")
