@@ -79,7 +79,7 @@ def main(screen):
     x = int(constants.MAX_X / 2) # middle of screen left to right
     y = int(constants.MAX_Y - 3) # move starting ball position just above Paddle
     position = Point(x, y)
-    velocity = Point(0, 0) # Kyle is a little confused on setting upward velocity. replaced (1,-1) with (1,1)
+    velocity = Point(0, 0) 
     ball = Actor()
     ball.set_text("@")
     ball.set_position(position)
