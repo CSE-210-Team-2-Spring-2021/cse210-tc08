@@ -83,7 +83,6 @@ class HandleCollisionsAction(Action):
                     y = random.randint(1, speed_level)
                     velocity = Point(x, y)
                     ball.set_velocity(velocity)
-                    print('test')
 
                     self._check = False
                     return

@@ -57,7 +57,7 @@ def main(screen):
         y = 1
         position = Point(x, y)
         ceiling = Actor()
-        ceiling.set_text("_")
+        ceiling.set_text("▔")
         ceiling.set_position(position)
         cast["ceiling"].append(ceiling)
 
