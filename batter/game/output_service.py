@@ -50,4 +50,3 @@ class OutputService:
     def flush_buffer(self):
         """Renders the screen.""" 
         self._screen.refresh()
-        print('refresh')

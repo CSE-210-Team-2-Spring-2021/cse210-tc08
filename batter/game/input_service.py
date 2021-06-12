@@ -18,10 +18,11 @@ class InputService:
         """The class constructor."""
         self._screen = screen
         self._keys = {}
-        self._keys[-205] = Point(1, 0)  # ->
-        self._keys[-203] = Point(-1, 0)  # <-
-        self._keys[97] = Point(-1, 0)  # a
-        self._keys[100] = Point(1, 0)  # d
+        sensitivity = 3
+        self._keys[-205] = Point(sensitivity, 0)  # ->
+        self._keys[-203] = Point(-sensitivity, 0)  # <-
+        self._keys[97] = Point(-sensitivity, 0)  # a
+        self._keys[100] = Point(sensitivity, 0)  # d
         self._keys[32] = 'Space'  # Space
 
     def get_direction(self):
@@ -33,7 +34,6 @@ class InputService:
         direction = Point(0, 0)
         event = self._screen.get_event()
         if isinstance(event, KeyboardEvent):
-            print('here')
             if event.key_code == -1:
                 sys.exit()
             
@@ -51,7 +51,6 @@ class InputService:
             True if space was pressed.
         """
         event = self._screen.get_event()
-        print('now here')
         if isinstance(event, KeyboardEvent):
             if event.key_code == -1:
                 sys.exit()
