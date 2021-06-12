@@ -33,10 +33,15 @@ class InputService:
         direction = Point(0, 0)
         event = self._screen.get_event()
         if isinstance(event, KeyboardEvent):
+            print('here')
             if event.key_code == -1:
                 sys.exit()
-            # elif event.key_code == 32: #This will be modified when we figure out 'space' to start game
-            direction = self._keys.get(event.key_code, Point(0, 0))
+            
+            elif event.key_code == 32:
+                pass #This will be modified when we figure out 'space' to start game
+
+            else:
+                direction = self._keys.get(event.key_code, Point(0, 0))
         return direction
 
     def space_pressed(self):
@@ -46,6 +51,7 @@ class InputService:
             True if space was pressed.
         """
         event = self._screen.get_event()
+        print('now here')
         if isinstance(event, KeyboardEvent):
             if event.key_code == -1:
                 sys.exit()
