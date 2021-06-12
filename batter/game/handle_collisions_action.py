@@ -24,37 +24,55 @@ class HandleCollisionsAction(Action):
         paddle = cast["paddle"][0]
         ball = cast["ball"][0]
         bricks = cast["brick"]
+        
+        assert ball.get_velocity() != (0, 0), "Velocity should not be zero!"
+        
         for i, brick in enumerate(bricks):
             if ball.get_position().equals(brick.get_position()):
                 bricks.pop(i)
-                x = random.randint(-5, 5)
-                y = random.randint(-5, 5)
+                x = random.randint(-3, 3)
+                y = random.randint(-3, 3)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         for unit in wall:
+            x_ball = 0
+            y_ball = 0
+            (x_ball, y_ball) = ball.get_velocity()
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(-5, 5)
-                y = random.randint(-5, 5)
+                if x_ball > 0:
+                    if y_ball > 0:
+                        x = random.randint(-2, -1)
+                        y = random.randint(1, 2)
+                    
+                    else:
+                        x = random.randint(-2, -1)
+                        y = random.randint(-2, -1)
+                
+                else:
+                    if y_ball > 0:
+                        x = random.randint(1, 2)
+                        y = random.randint(1, 2)
+                    
+                    else:
+                        x = random.randint(1, 2)
+                        y = random.randint(-2, -1)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         for unit in floor:
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(-5, 5)
-                y = random.randint(-5, 5)
-                velocity = Point(x, y)
-                ball.set_velocity(velocity)
+                return True
 
         for unit in ceiling:
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(-5, 5)
-                y = random.randint(-5, 5)
+                x = random.randint(-3, 3)
+                y = random.randint(-3, 1)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         if ball.get_position().equals(paddle.get_position()):
-            x = random.randint(-5, 5)
-            y = random.randint(-5, 5)
+            x = random.randint(-3, 3)
+            y = random.randint(1, 3)
             velocity = Point(x, y)
             ball.set_velocity(velocity)
