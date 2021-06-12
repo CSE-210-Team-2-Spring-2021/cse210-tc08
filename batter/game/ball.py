@@ -12,7 +12,7 @@ class Ball(Actor):
         Args:
             self - An instance of Ball
         """
-        super().__intit__()
+        super().__init__()
 
     def reset(self, cast):
         """ Responsible for resetting the Ball on the Paddle with new random direction.

@@ -80,7 +80,7 @@ def main(screen):
     y = int(constants.MAX_Y - 3) # move starting ball position just above Paddle
     position = Point(x, y)
     velocity = Point(0, 0) # Kyle is a little confused on setting upward velocity. replaced (1,-1) with (1,1)
-    ball = Actor()
+    ball = Ball()
     ball.set_text("@")
     ball.set_position(position)
     ball.set_velocity(velocity)
@@ -94,7 +94,7 @@ def main(screen):
     control_actors_action = ControlActorsAction(input_service)
     move_actors_action = MoveActorsAction()
     handle_collisions_acition = HandleCollisionsAction()
-    start_game_action = StartGameAction()
+    start_game_action = StartGameAction(input_service)
     draw_actors_action = DrawActorsAction(output_service)
     
 

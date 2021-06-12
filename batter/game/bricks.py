@@ -1,5 +1,6 @@
 from game import constants
 from game.point import Point
+from game.actor import Actor
 
 class Bricks(Actor):
     """The responsibility of Bricks class is to renew and destroy them.

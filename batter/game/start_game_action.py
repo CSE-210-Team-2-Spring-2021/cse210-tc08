@@ -1,8 +1,9 @@
 import random
+from game.action import Action
 from game.point import Point
 
 
-class StartGameAction:
+class StartGameAction(Action):
     """The class that runs when a game is lost. Plays the game when a key is pressed
 
     Stereotype:
@@ -11,6 +12,14 @@ class StartGameAction:
     Attributes:
         _tag (string): The action tag (input, update or output).
     """
+    
+    def __init__(self, input_service):
+        """The class constructor.
+        
+        Args:
+            input_service (InputService): An instance of InputService.
+        """
+        self._input_service = input_service
 
     def execute(self, cast):
         """Executes the action using the given actors.
