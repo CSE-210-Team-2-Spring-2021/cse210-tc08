@@ -3,7 +3,11 @@ from game import constants
 from game.point import Point
 
 class Ball(Actor):
-    """
+    """ This class is to move the ball actor and to also reset the ball if the floor is hit.
+    Stereotype:
+        Service Provider
+    Attributes:
+        cast (dict list) - dictionary of the Actors
     """
     pass
 
@@ -25,7 +29,7 @@ class Ball(Actor):
         x = int(constants.MAX_X / 2) # middle of screen left to right
         y = int(constants.MAX_Y - 2) # move starting ball position just above Paddle
         position = Point(x, y)
-        velocity = Point(1, 1) # Kyle is a little confused on setting upward velocity. replaced (1,-1) with (1,1)
+        velocity = Point(0, 0) 
         ball.set_text("@")
         ball.set_position(position)
         ball.set_velocity(velocity)
