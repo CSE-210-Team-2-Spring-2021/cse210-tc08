@@ -13,6 +13,14 @@ class MoveActorsAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
+    def __init__(self):
+        """Class Constructor
+
+        Args:
+            _ball - bool determining if the ball moves this fram
+        """
+        self._ball = True
+
     def execute(self, cast):
         """Executes the action using the given actors.
 
@@ -22,7 +30,14 @@ class MoveActorsAction(Action):
         for group in cast.values():
             for actor in group:
                 if not actor.get_velocity().is_zero():
-                    self._move_actor(actor)
+                    if actor.get_text() == '@':
+                        if self._ball:
+                            self._move_actor(actor)
+                            self._ball = False
+                        else:
+                            self._ball = True
+                    else:
+                        self._move_actor(actor)
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 

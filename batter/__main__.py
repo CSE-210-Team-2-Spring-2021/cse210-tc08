@@ -1,5 +1,5 @@
 from game import start_game_action
-import random
+import random, math
 from game import constants
 from game.director import Director
 from game.actor import Actor
@@ -22,16 +22,25 @@ def main(screen):
 
     text = Actor()
     text.set_text("")
-    text.set_position(Point(1, 0))
+    text.set_position(Point(2, 0))
     cast["text"] = [text]
 
-    x = int(constants.MAX_X / 2)
-    y = int(constants.MAX_Y - 2)
-    position = Point(x, y)
-    paddle = Actor()
-    paddle.set_text("===========")
-    paddle.set_position(position)
-    cast["paddle"] = [paddle]
+    #x = int(constants.MAX_X / 2)
+    #y = int(constants.MAX_Y - 2)
+    #position = Point(x, y)
+    #paddle = Actor()
+    #paddle.set_text("===========")
+    #paddle.set_position(position)
+    #cast["paddle"] = [paddle]
+
+    cast['paddle'] = []
+    for x in range(math.floor(constants.MAX_X/2 - 6), math.ceil(constants.MAX_X/2 + 6)):
+        y = int(constants.MAX_Y - 2)
+        position = Point(x, y)
+        paddle = Actor()
+        paddle.set_text('=')
+        paddle.set_position(position)
+        cast['paddle'].append(paddle)
 
     cast["brick"] = []
     for x in range(5, 75):
@@ -44,7 +53,7 @@ def main(screen):
 
     cast["floor"] = []
     for x in range(1, constants.MAX_X - 1):
-        y = constants.MAX_Y
+        y = constants.MAX_Y - 1
         position = Point(x, y)
         floor = Actor()
         floor.set_text("_")
@@ -53,7 +62,7 @@ def main(screen):
 
     cast["ceiling"] = []
     for x in range(1, constants.MAX_X - 1):
-        y = 0
+        y = 1
         position = Point(x, y)
         ceiling = Actor()
         ceiling.set_text("_")
@@ -62,14 +71,14 @@ def main(screen):
 
     cast["wall"] = []
     for y in range(0, constants.MAX_Y):
-        x = 0
+        x = 1
         position = Point(x, y)
         wall = Actor()
         wall.set_text("|")
         wall.set_position(position)
         cast["wall"].append(wall)
     for y in range(0, constants.MAX_Y):
-        x = constants.MAX_X
+        x = constants.MAX_X - 2
         position = Point(x, y)
         wall = Actor()
         wall.set_text("|")

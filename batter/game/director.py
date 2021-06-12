@@ -26,7 +26,7 @@ class Director:
 
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
-        self._cue_action("pause")
+        self._keep_playing()
         while True:
             self._cue_action("input")
             self._cue_action("update")
@@ -44,10 +44,11 @@ class Director:
         for action in self._script[tag]:
             action.execute(self._cast)
 
-    def _keep_playing(self, cast):
+    def _keep_playing(self):
         """Asks the user if they would like to play again and restarts the game"""
-        if self.handle_collisions.execute(self._cast.floor):
-            for actor in self._cast["text"][0]:
-                actor.set_text("Too play again, press the \"Space\" key.")
-                self._cue_action("pause")
-                actor.set_text("")
+        actor = self._cast['text'][0]
+        actor.set_text("Press Enter to start game, Press Esc to quit:")
+        self._cue_action('output')
+        self._cue_action("pause")
+        actor.set_text("")
+        self._cue_action('output')
