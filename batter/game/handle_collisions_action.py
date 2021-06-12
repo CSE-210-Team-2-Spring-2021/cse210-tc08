@@ -24,37 +24,37 @@ class HandleCollisionsAction(Action):
         paddle = cast["paddle"][0]
         ball = cast["ball"][0]
         bricks = cast["brick"]
-        for brick in bricks:
+        for i, brick in enumerate(bricks):
             if ball.get_position().equals(brick.get_position()):
-                bricks.pop(brick)
-                x = random.randint(1, 5)
-                y = random.randint(1, 5)
+                bricks.pop(i)
+                x = random.randint(-5, 5)
+                y = random.randint(-5, 5)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         for unit in wall:
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(1, 5)
-                y = random.randint(1, 5)
+                x = random.randint(-5, 5)
+                y = random.randint(-5, 5)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         for unit in floor:
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(1, 5)
-                y = random.randint(1, 5)
+                x = random.randint(-5, 5)
+                y = random.randint(-5, 5)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         for unit in ceiling:
             if ball.get_position().equals(unit.get_position()):
-                x = random.randint(1, 5)
-                y = random.randint(1, 5)
+                x = random.randint(-5, 5)
+                y = random.randint(-5, 5)
                 velocity = Point(x, y)
                 ball.set_velocity(velocity)
 
         if ball.get_position().equals(paddle.get_position()):
-            x = random.randint(1, 5)
-            y = random.randint(1, 5)
+            x = random.randint(-5, 5)
+            y = random.randint(-5, 5)
             velocity = Point(x, y)
             ball.set_velocity(velocity)
