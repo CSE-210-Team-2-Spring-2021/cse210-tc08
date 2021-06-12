@@ -62,14 +62,14 @@ def main(screen):
         cast["ceiling"].append(ceiling)
 
     cast["wall"] = []
-    for y in range(0, constants.MAX_Y):
+    for y in range(1, constants.MAX_Y):
         x = 1
         position = Point(x, y)
         wall = Actor()
         wall.set_text("|")
         wall.set_position(position)
         cast["wall"].append(wall)
-    for y in range(0, constants.MAX_Y):
+    for y in range(1, constants.MAX_Y):
         x = constants.MAX_X - 1
         position = Point(x, y)
         wall = Actor()
