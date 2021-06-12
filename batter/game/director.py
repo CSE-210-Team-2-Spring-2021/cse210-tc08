@@ -35,6 +35,8 @@ class Director:
 
             if self._cast['ball'][0].get_floor():
                 self._keep_playing()
+            elif self._cast['brick'] == []:
+                self._keep_playing()
 
             sleep(constants.FRAME_LENGTH)
 
