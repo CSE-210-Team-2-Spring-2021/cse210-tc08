@@ -1,6 +1,7 @@
 import random, math
 from game.action import Action
 from game.point import Point
+from game.bricks import Bricks
 
 
 class StartGameAction(Action):
@@ -35,6 +36,9 @@ class StartGameAction(Action):
         ball_position  = Point(x, (y - 1))
         ball.set_position(ball_position)
         ball.reset_floor()
+        brick =  Bricks()
+        brick.generate_bricks(cast)
+
         while True:
             space_pressed = self._input_service.space_pressed()
             if space_pressed:
