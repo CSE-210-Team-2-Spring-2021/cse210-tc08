@@ -55,6 +55,4 @@ class Ball(Actor):
         else:
             frame = True
 
-    def change_velocity(self, cast, velocity): # still working on putting this together.
-        ball = cast["ball"][0] # there's only one in the cast
-        pass
+    
