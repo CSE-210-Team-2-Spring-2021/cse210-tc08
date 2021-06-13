@@ -36,7 +36,7 @@ class Director:
             if self._cast['ball'][0].get_floor():
                 self._keep_playing()
             elif self._cast['brick'] == []:
-                self._keep_playing()
+                self._keep_playing(1)
 
             sleep(constants.FRAME_LENGTH)
 
@@ -49,12 +49,15 @@ class Director:
         for action in self._script[tag]:
             action.execute(self._cast)
 
-    def _keep_playing(self):
+    def _keep_playing(self, brick = None):
         """Asks the user if they would like to play again and restarts the game"""
         actor = self._cast['text'][0]
         if self._first_run:
             actor.set_text("Press Spacebar to start game, Press Esc to quit:")
             self._first_run = False
+        elif brick != None:
+            actor.set_text("You Won! Congratulations! Press Spacebar to play again, Press Esc to quit:")
+
         else:
             actor.set_text("You Lost! Press Spacebar to try again, Press Esc to quit:")
         self._cue_action('output')
